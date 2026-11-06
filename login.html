@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connexion – Allo Linke</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--bg:#f4f6f8;--card:#fff;--ink:#10232b;--muted:#566872;--indigo:#2a3d9c;--line:#d9e1e6}
+  @media (prefers-color-scheme:dark){:root{--bg:#0c151c;--card:#13202a;--ink:#e7eef2;--muted:#9db0bb;--indigo:#9aa8ff;--line:#24343f}}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+    font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 24px;max-width:380px;width:100%;text-align:center}
+  h1{font-size:24px;margin:0 0 6px}
+  p{color:var(--muted);margin:0 0 24px}
+  button{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;font:600 16px system-ui,sans-serif;
+    padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+  button[disabled]{opacity:.6}
+  .err{color:#c0392b;margin-top:16px;font-size:14px;min-height:20px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Allo Linke</h1>
+  <p id="msg">Connectez-vous avec votre compte Google.</p>
+  <button id="go" type="button">
+    <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+    Continuer avec Google
+  </button>
+  <div class="err" id="err" role="alert"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+  firebase.initializeApp({
+    apiKey: "AIzaSyCuDNH-kEHU-hKJXXljaBYrk1A18hzXUUM",
+    authDomain: "allo-linke.firebaseapp.com",
+    projectId: "allo-linke",
+    appId: "1:817467621720:web:fea032f07217056b0de52d"
+  });
+  var auth = firebase.auth();
+  var btn = document.getElementById("go"), err = document.getElementById("err");
+
+  // Only send the token back to the Allo Linke app (never to another site).
+  var ALLOWED = [/^frontend:\/\//, /^exps?:\/\//, /^https:\/\/(www\.)?allolinke\.com\//,
+                 /^http:\/\/localhost(:\d+)?\//, /^http:\/\/127\.0\.0\.1(:\d+)?\//];
+  var raw = new URLSearchParams(location.search).get("redirect") || "";
+  var target = ALLOWED.some(function (r) { return r.test(raw); }) ? raw : "";
+  if (target) sessionStorage.setItem("al_redirect", target);
+  else target = sessionStorage.getItem("al_redirect") || "";
+
+  function done(user) {
+    return user.getIdToken().then(function (tok) {
+      if (!target) { err.textContent = "Ouvrez cette page depuis l'application Allo Linke."; return; }
+      document.getElementById("msg").textContent = "Connexion réussie, retour à l'application…";
+      location.replace(target.split("#")[0] + "#session_id=" + encodeURIComponent(tok));
+    });
+  }
+  function fail(e) {
+    btn.disabled = false;
+    err.textContent = (e && e.code === "auth/popup-closed-by-user") ? "" : "La connexion a échoué. Réessayez.";
+  }
+
+  auth.getRedirectResult().then(function (res) { if (res && res.user) return done(res.user); }).catch(fail);
+
+  btn.addEventListener("click", function () {
+    btn.disabled = true; err.textContent = "";
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+    auth.signInWithPopup(provider).then(function (res) { return done(res.user); }).catch(function (e) {
+      if (e && (e.code === "auth/popup-blocked" || e.code === "auth/operation-not-supported-in-this-environment")) {
+        return auth.signInWithRedirect(provider);
+      }
+      fail(e);
+    });
+  });
+</script>
+</body>
+</html>
