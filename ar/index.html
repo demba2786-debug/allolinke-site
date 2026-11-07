@@ -10,6 +10,7 @@
 <link rel="alternate" hreflang="it" href="https://www.allolinke.com/it/">
 <link rel="alternate" hreflang="en" href="https://www.allolinke.com/en/">
 <link rel="alternate" hreflang="es" href="https://www.allolinke.com/es/">
+<link rel="alternate" hreflang="pt" href="https://www.allolinke.com/pt/">
 <link rel="alternate" hreflang="ar" href="https://www.allolinke.com/ar/">
 <link rel="alternate" hreflang="x-default" href="https://www.allolinke.com/">
 <meta property="og:type" content="website">
@@ -43,9 +44,31 @@
   --indigo:#7fd08a; --indigo-soft:#1d3322; --marigold:#e07a52; --marigold-ink:#1a0b05; color-scheme:dark}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);margin:0}
+.wrap{max-width:1080px;margin:0 auto;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1080px;margin:0 auto}
+
+/* green band: header + hero, like the store cover */
+.band{background:radial-gradient(120% 90% at 75% 40%,#4a8a45 0%,#2E5C31 55%,#22472a 100%);color:#fff}
+.band .brand{color:#fff}
+.band .mark svg rect{fill:#fff}.band .mark svg text{fill:#2E5C31}
+.band .lang{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
+.band .lang a{color:rgba(255,255,255,.85)}
+.band .lang a[aria-current="page"]{background:#fff;color:#2E5C31}
+.band .status{background:rgba(255,255,255,.14);color:#fff}
+.band .hero h1{color:#fff}
+.band .hero h1 em{color:#bfeab8}
+.band .lede{color:rgba(255,255,255,.88)}
+.band .store{border-color:rgba(255,255,255,.8)}
+.band .store small{color:rgba(255,255,255,.75)}
+.band a{color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chips span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 16px;font-weight:600;font-size:15px}
+.world{display:grid;place-items:center}
+.globe{width:100%;max-width:440px;height:auto;display:block;overflow:visible}
+.cont text{font:700 17px var(--f-body);fill:#fff;paint-order:stroke;stroke:#24502a;stroke-width:5px;stroke-linejoin:round}
+[dir="rtl"] .cont text{font-family:"Noto Kufi Arabic",var(--f-body)}
+section.block.first{border-top:0}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.01em}
 p{margin:0}
 a{color:var(--indigo)}
@@ -68,7 +91,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:16p
 .status{display:inline-flex;align-items:center;gap:8px;background:var(--indigo-soft);color:var(--indigo);
   font:600 13px/1 var(--f-body);padding:9px 14px;border-radius:999px}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--marigold);display:block}
-.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;margin-top:22px}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;margin-top:22px}
 .hero h1 em{font-style:normal;color:var(--indigo)}
 .lede{font-size:19px;color:var(--muted);max-width:34em;margin-top:22px}
 .stores{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
@@ -130,7 +153,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--mute
 
 @media (max-width:880px){
   .hero{grid-template-columns:1fr;gap:40px;padding-block:24px 56px}
-  .receipt{margin:0 auto;transform:rotate(-1.5deg)}
+  .globe{max-width:320px}
   .services{grid-template-columns:1fr 1fr}
   .split{grid-template-columns:1fr}
 }
@@ -153,34 +176,28 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--mute
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Allo Linke", "url": "https://www.allolinke.com", "logo": "https://www.allolinke.com/icon-512.png", "email": "contact@allolinke.com", "address": {"@type": "PostalAddress", "addressCountry": "IT"}}</script>
 </head>
 <body>
-<div class="wrap">
+<div class="band"><div class="wrap">
   <header class="top">
     <a class="brand" href="./" aria-label="Allo Linke"><span class="mark"><svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#2E5C31"/><text x="256" y="318" text-anchor="middle" font-family="Bricolage Grotesque,DejaVu Sans,Arial,sans-serif" font-weight="800" font-size="200" fill="#fff" letter-spacing="-8">AL</text><path d="M150 360 Q256 410 362 360" fill="none" stroke="#C85A32" stroke-width="20" stroke-linecap="round"/></svg></span>Allo Linke</a>
-    <nav class="lang" aria-label="اللغة"><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr">FR</a><a href="../it/" hreflang="it" lang="it" data-lang="it">IT</a><a href="../en/" hreflang="en" lang="en" data-lang="en">EN</a><a href="../es/" hreflang="es" lang="es" data-lang="es">ES</a><a href="../ar/" hreflang="ar" lang="ar" data-lang="ar" aria-current="page">ع</a></nav>
+    <nav class="lang" aria-label="اللغة"><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr">FR</a><a href="../it/" hreflang="it" lang="it" data-lang="it">IT</a><a href="../en/" hreflang="en" lang="en" data-lang="en">EN</a><a href="../es/" hreflang="es" lang="es" data-lang="es">ES</a><a href="../pt/" hreflang="pt" lang="pt" data-lang="pt">PT</a><a href="../ar/" hreflang="ar" lang="ar" data-lang="ar" aria-current="page">ع</a></nav>
   </header>
-  <main>
     <div class="hero">
       <div>
         <span class="status"><i></i>الإطلاق قريبًا</span>
         <h1>ابقَ على تواصل مع أحبائك، <em>في أفريقيا وفي كل أنحاء العالم.</em></h1>
         <p class="lede">يرسل ألو لينك رصيد المكالمات وباقات الإنترنت إلى أكثر من 180 بلدًا ويتيح لك الاتصال بعائلتك. السعر المعروض يشمل كل الرسوم.</p>
+        <div class="chips"><span>📱 رصيد المكالمات</span><span>🌐 باقات الإنترنت</span><span>📞 مكالمات دولية</span><span>💡 الكهرباء</span></div>
         <div class="stores">
           <div class="store"><small>قريبًا على</small><b>Google Play</b></div>
           <div class="store"><small>قريبًا على</small><b>App Store</b></div>
         </div>
       </div>
-      <figure class="receipt" style="margin-block:0">
-        <div class="r-head"><span class="eyebrow">شحن</span><span class="r-tag">مثال</span></div>
-        <div class="r-big mono" dir="ltr">2 000<small>FCFA</small></div>
-        <div class="r-row"><span>إلى</span><span class="mono" dir="ltr">+223 7• •• •• ••</span></div>
-        <div class="r-row"><span>المشغّل</span><span dir="ltr">Orange Mali</span></div>
-        <div class="r-row"><span>المدفوع (شامل الرسوم)</span><span class="mono" dir="ltr">3,89 €</span></div>
-        <div class="r-ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تم استلام الرصيد في مالي</span></div>
-        <p class="r-note">مثال تقريبي. يظهر السعر الدقيق في التطبيق قبل الدفع.</p>
-      </figure>
+      <figure class="world" style="margin:0"><svg class="globe" viewBox="0 0 480 460" aria-hidden="true"><g fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.5"><circle cx="240" cy="230" r="200"/><ellipse cx="240" cy="230" rx="95" ry="200"/><ellipse cx="240" cy="230" rx="160" ry="200"/><ellipse cx="240" cy="230" rx="200" ry="80"/><ellipse cx="240" cy="230" rx="200" ry="150"/><line x1="40" y1="230" x2="440" y2="230"/></g><g fill="none" stroke="#b9ecb2" stroke-width="2.4" stroke-linecap="round"><path d="M150 95 Q196 69 250 70"/><path d="M250 70 Q295 82 330 120"/><path d="M150 95 Q170 118 205 165"/><path d="M250 70 Q226 104 205 165"/><path d="M330 120 Q326 159 300 215"/><path d="M95 190 Q138 170 205 165"/><path d="M205 165 Q257 177 300 215"/><path d="M300 215 Q349 204 370 200"/><path d="M330 120 Q362 152 370 200"/><path d="M95 190 Q99 241 130 290"/><path d="M205 165 Q207 218 235 280"/><path d="M300 215 Q279 255 235 280"/><path d="M370 200 Q364 253 330 300"/><path d="M235 280 Q291 301 330 300"/><path d="M130 290 Q172 295 235 280"/><path d="M130 290 Q148 338 185 365"/><path d="M235 280 Q206 336 185 365"/><path d="M235 280 Q260 339 280 370"/><path d="M330 300 Q312 347 280 370"/><path d="M185 365 Q232 381 280 370"/><path d="M300 215 Q328 262 330 300"/></g><circle cx="150" cy="95" r="13" fill="#fff" fill-opacity=".16"/><circle cx="150" cy="95" r="6" fill="#fff"/><circle cx="250" cy="70" r="13" fill="#fff" fill-opacity=".16"/><circle cx="250" cy="70" r="6" fill="#fff"/><circle cx="330" cy="120" r="13" fill="#fff" fill-opacity=".16"/><circle cx="330" cy="120" r="6" fill="#fff"/><circle cx="95" cy="190" r="13" fill="#fff" fill-opacity=".16"/><circle cx="95" cy="190" r="6" fill="#fff"/><circle cx="205" cy="165" r="13" fill="#fff" fill-opacity=".16"/><circle cx="205" cy="165" r="6" fill="#fff"/><circle cx="300" cy="215" r="13" fill="#fff" fill-opacity=".16"/><circle cx="300" cy="215" r="6" fill="#E8743F"/><circle cx="370" cy="200" r="13" fill="#fff" fill-opacity=".16"/><circle cx="370" cy="200" r="6" fill="#fff"/><circle cx="130" cy="290" r="13" fill="#fff" fill-opacity=".16"/><circle cx="130" cy="290" r="6" fill="#fff"/><circle cx="235" cy="280" r="13" fill="#fff" fill-opacity=".16"/><circle cx="235" cy="280" r="6" fill="#E8743F"/><circle cx="330" cy="300" r="13" fill="#fff" fill-opacity=".16"/><circle cx="330" cy="300" r="6" fill="#fff"/><circle cx="185" cy="365" r="13" fill="#fff" fill-opacity=".16"/><circle cx="185" cy="365" r="6" fill="#fff"/><circle cx="280" cy="370" r="13" fill="#fff" fill-opacity=".16"/><circle cx="280" cy="370" r="6" fill="#fff"/><g class="cont" text-anchor="middle"><text x="70" y="232">الأمريكتان</text><text x="200" y="62">أوروبا</text><text x="212" y="318">أفريقيا</text><text x="318" y="252">الشرق الأوسط</text><text x="405" y="160">آسيا</text><text x="372" y="400">أوقيانوسيا</text></g></svg></figure>
     </div>
-
-    <section class="block">
+</div></div>
+<div class="wrap">
+  <main>
+    <section class="block first">
       <h2>ما يمكنك إرساله</h2>
       <div class="services">
         <div class="svc"><span class="pill">عند الإطلاق</span><h3>رصيد المكالمات</h3><p>اشحن أرقام أورنج وMTN وموف وفودافون ومئات المشغّلين الآخرين.</p></div>
