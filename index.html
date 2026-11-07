@@ -2,274 +2,35 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Allo Linke</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Allo Linke : recharges mobiles et forfaits Internet depuis l'Europe vers l'Afrique de l'Ouest.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<meta name="description" content="Envoyez du crédit, des forfaits internet et appelez vos proches en Afrique et partout dans le monde. Prix frais inclus, paiement par carte ou en espèces chez un commerçant.">
+<link rel="canonical" href="https://www.allolinke.com/">
+<link rel="alternate" hreflang="fr" href="https://www.allolinke.com/fr/">
+<link rel="alternate" hreflang="it" href="https://www.allolinke.com/it/">
+<link rel="alternate" hreflang="en" href="https://www.allolinke.com/en/">
+<link rel="alternate" hreflang="es" href="https://www.allolinke.com/es/">
+<link rel="alternate" hreflang="ar" href="https://www.allolinke.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://www.allolinke.com/">
+<meta property="og:image" content="https://www.allolinke.com/og-image.png">
+<meta name="theme-color" content="#2E5C31">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+(function(){var L=["fr","it","en","es","ar"],l;
+try{l=localStorage.getItem("al-lang")}catch(e){}
+if(L.indexOf(l)<0){var n=(navigator.languages&&navigator.languages[0])||navigator.language||"fr";l=n.slice(0,2).toLowerCase()}
+if(L.indexOf(l)<0)l="fr";
+location.replace(l+"/"+location.search+location.hash);})();
+</script>
 <style>
-/* Layout: one calm column; the hero pairs the promise with a recharge receipt, the page's one bold object. */
-:root{
-  --bg:#f4f6f8; --surface:#ffffff; --ink:#10232b; --muted:#566872; --line:#d9e1e6;
-  --indigo:#2a3d9c; --indigo-soft:#e6e9f7; --marigold:#e89a24; --marigold-ink:#5a3600;
-  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0c151c; --surface:#13202a; --ink:#e7eef2; --muted:#9db0bb; --line:#24343f;
-  --indigo:#9aa8ff; --indigo-soft:#1c2550; --marigold:#f3b35a; --marigold-ink:#2a1900; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0c151c; --surface:#13202a; --ink:#e7eef2; --muted:#9db0bb; --line:#24343f;
-  --indigo:#9aa8ff; --indigo-soft:#1c2550; --marigold:#f3b35a; --marigold-ink:#2a1900; color-scheme:dark}
-
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1080px;margin:0 auto}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.01em}
-p{margin:0}
-a{color:var(--indigo)}
-:focus-visible{outline:3px solid var(--marigold);outline-offset:2px;border-radius:6px}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font:600 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-
-/* header */
-header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
-.brand{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--f-display);color:var(--ink);text-decoration:none}
-.mark{width:34px;height:34px;border-radius:10px;background:var(--indigo);display:grid;place-items:center}
-.mark svg{width:20px;height:20px}
-.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
-.lang button{font:600 13px/1 var(--f-body);border:0;background:none;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-
-/* hero */
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-block:40px 72px}
-.hero > *{min-width:0}
-.status{display:inline-flex;align-items:center;gap:8px;background:var(--indigo-soft);color:var(--indigo);
-  font:600 13px/1 var(--f-body);padding:9px 14px;border-radius:999px}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--marigold);display:block}
-.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;margin-top:22px}
-.hero h1 em{font-style:normal;color:var(--indigo)}
-.lede{font-size:19px;color:var(--muted);max-width:34em;margin-top:22px}
-.stores{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.store{display:flex;flex-direction:column;gap:3px;border:1.5px solid var(--ink);border-radius:12px;padding:10px 16px;min-width:170px}
-.store small{font-size:12px;color:var(--muted)}
-.store b{font:700 16px/1.2 var(--f-display)}
-
-/* receipt */
-.receipt{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px 22px;position:relative;
-  box-shadow:0 30px 60px -36px rgba(16,35,43,.45);transform:rotate(-2deg);max-width:380px;margin-left:auto}
-.receipt::before,.receipt::after{content:"";position:absolute;left:-1px;right:-1px;height:12px;
-  background:radial-gradient(circle at 6px 0,var(--bg) 5.5px,transparent 6px) 0 0/14px 12px repeat-x}
-.receipt::before{top:-1px}
-.receipt::after{bottom:-1px;transform:scaleY(-1)}
-.r-head{display:flex;justify-content:space-between;align-items:center}
-.r-tag{font:600 11px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;background:var(--marigold);color:var(--marigold-ink);padding:6px 9px;border-radius:6px}
-.r-row{display:flex;justify-content:space-between;gap:12px;padding-block:12px;border-bottom:1px dashed var(--line);font-size:15px}
-.r-row span:first-child{color:var(--muted)}
-.r-big{font:800 44px/1 var(--f-display);margin-block:18px 6px}
-.r-big small{font:600 18px var(--f-body);color:var(--muted);margin-left:6px}
-.r-ok{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--indigo);font-weight:600;font-size:15px}
-.r-note{font-size:12px;color:var(--muted);margin-top:10px}
-
-/* sections */
-section.block{padding-block:64px;border-top:1px solid var(--line)}
-.block h2{font-size:clamp(28px,4vw,40px);font-weight:800;max-width:20em}
-.block .intro{color:var(--muted);margin-top:12px;max-width:40em}
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.svc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.svc h3{font-size:20px;font-weight:600}
-.svc p{color:var(--muted);font-size:15px}
-.pill{align-self:flex-start;font:600 12px/1 var(--f-body);padding:6px 10px;border-radius:999px;background:var(--indigo-soft);color:var(--indigo)}
-.pill.soon{background:transparent;border:1px solid var(--line);color:var(--muted)}
-
-.steps{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
-.steps li{counter-increment:s;display:flex;flex-direction:column;gap:8px;min-width:0}
-.steps li::before{content:counter(s);font:800 15px/1 var(--f-display);width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;background:var(--ink);color:var(--bg)}
-.steps b{font:600 19px/1.3 var(--f-display)}
-.steps span{color:var(--muted);font-size:15px}
-
-.countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
-.country{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:15px}
-.country code{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-
-.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.split > *{min-width:0}
-.shops{background:var(--ink);color:var(--bg);border-radius:20px;padding:32px}
-.shops h3{font-size:26px;font-weight:800}
-.shops p{margin-top:12px;opacity:.85}
-.shops ul{margin:16px 0 0;padding-left:20px;display:grid;gap:6px;opacity:.9}
-
-.contact{display:flex;flex-direction:column;gap:14px}
-.mailbox{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.mailbox .mono{font-size:17px;user-select:all;overflow-wrap:anywhere}
-.copy{margin-left:auto;font:600 14px/1 var(--f-body);border:0;background:var(--indigo);color:var(--bg);padding:11px 16px;border-radius:10px;cursor:pointer}
-
-footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-
-@media (max-width:880px){
-  .hero{grid-template-columns:1fr;gap:40px;padding-block:24px 56px}
-  .receipt{margin:0 auto;transform:rotate(-1.5deg)}
-  .services{grid-template-columns:1fr 1fr}
-  .split{grid-template-columns:1fr}
-}
-@media (max-width:560px){
-  .services,.steps{grid-template-columns:1fr}
-  .store{min-width:0;flex:1}
-}
-@media (prefers-reduced-motion:no-preference){
-  .receipt{animation:drop .7s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes drop{from{transform:translateY(-10px) rotate(-4deg)}to{transform:rotate(-2deg)}}
-}
+:root{--bg:#f6f4ee;--ink:#14261a;--green:#2E5C31}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a12;--ink:#e8efe9;--green:#7fd08a}}
+:root[data-theme="dark"]{--bg:#0f1a12;--ink:#e8efe9;--green:#7fd08a}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif;padding:16px}
+.box{text-align:center} .box svg{width:72px;height:72px} nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+nav a{color:var(--green);font-weight:600;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:8px 14px}
 </style>
 </head>
-<body>
-
-
-<div class="wrap">
-  <header class="top">
-    <a class="brand" href="#" aria-label="Allo Linke">
-      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h4l2 5-2.5 1.5a11 11 0 0 0 3 3L15 11l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z"/></svg></span>
-      Allo Linke
-    </a>
-    <div class="lang" role="group" aria-label="Langue / Language">
-      <button type="button" id="lang-fr" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-  </header>
-
-  <main>
-    <div class="hero">
-      <div>
-        <span class="status"><i></i><span data-i18n="status">Lancement prochain</span></span>
-        <h1 data-i18n-html="h1">Le crédit de la famille, <em>envoyé depuis l'Europe.</em></h1>
-        <p class="lede" data-i18n="lede">Allo Linke recharge les téléphones au Mali, au Sénégal, en Côte d'Ivoire, en Mauritanie et dans toute l'Afrique de l'Ouest. Crédit d'appel et forfaits Internet, payés en euros, prix frais inclus.</p>
-        <div class="stores">
-          <div class="store"><small data-i18n="soon">Bientôt sur</small><b>Google Play</b></div>
-          <div class="store"><small data-i18n="soon">Bientôt sur</small><b>App Store</b></div>
-        </div>
-      </div>
-
-      <figure class="receipt" aria-label="Exemple de recharge" style="margin-block:0">
-        <div class="r-head"><span class="eyebrow" data-i18n="r-title">Recharge</span><span class="r-tag" data-i18n="r-example">Exemple</span></div>
-        <div class="r-big mono">2 000<small>FCFA</small></div>
-        <div class="r-row"><span data-i18n="r-to">Pour</span><span class="mono">+223 7• •• •• ••</span></div>
-        <div class="r-row"><span data-i18n="r-op">Opérateur</span><span>Orange Mali</span></div>
-        <div class="r-row"><span data-i18n="r-paid">Payé (frais inclus)</span><span class="mono">3,89 €</span></div>
-        <div class="r-ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="r-ok">Crédit reçu au Mali</span></div>
-        <p class="r-note" data-i18n="r-note">Exemple indicatif. Le prix exact s'affiche dans l'application avant de payer.</p>
-      </figure>
-    </div>
-
-    <section class="block" aria-labelledby="t-svc">
-      <h2 id="t-svc" data-i18n="svc-h">Ce que vous pouvez envoyer</h2>
-      <div class="services">
-        <div class="svc"><span class="pill" data-i18n="at-launch">Au lancement</span><h3 data-i18n="s1-h">Crédit d'appel</h3><p data-i18n="s1-p">Rechargez un numéro Orange, Free, MTN, Moov et d'autres opérateurs.</p></div>
-        <div class="svc"><span class="pill" data-i18n="at-launch">Au lancement</span><h3 data-i18n="s2-h">Forfaits Internet</h3><p data-i18n="s2-p">Les vrais forfaits des opérateurs, avec le nombre de Go et la durée affichés.</p></div>
-        <div class="svc"><span class="pill soon" data-i18n="later">Prochainement</span><h3 data-i18n="s3-h">Appels internationaux</h3><p data-i18n="s3-p">Appelez la famille depuis l'application, à la minute.</p></div>
-        <div class="svc"><span class="pill soon" data-i18n="later">Prochainement</span><h3 data-i18n="s4-h">Électricité et factures</h3><p data-i18n="s4-p">Payez l'électricité prépayée et certaines factures de vos proches.</p></div>
-      </div>
-    </section>
-
-    <section class="block" aria-labelledby="t-how">
-      <h2 id="t-how" data-i18n="how-h">Une recharge en trois étapes</h2>
-      <ol class="steps">
-        <li><b data-i18n="st1-b">Le pays et le numéro</b><span data-i18n="st1-s">L'opérateur est reconnu à partir du numéro.</span></li>
-        <li><b data-i18n="st2-b">Le montant</b><span data-i18n="st2-s">Le prix affiché comprend déjà tous les frais.</span></li>
-        <li><b data-i18n="st3-b">Le paiement</b><span data-i18n="st3-s">Par carte bancaire dans l'application, ou en espèces chez un commerçant partenaire.</span></li>
-      </ol>
-    </section>
-
-    <section class="block" aria-labelledby="t-cty">
-      <h2 id="t-cty" data-i18n="cty-h">Toute l'Afrique de l'Ouest</h2>
-      <p class="intro" data-i18n="cty-p">Les pays prévus pour la première version. La liste des opérateurs disponibles s'affiche dans l'application.</p>
-      <div class="countries" id="countries"></div>
-    </section>
-
-    <section class="block" aria-labelledby="t-shop">
-      <div class="split">
-        <div class="shops">
-          <h3 id="t-shop" data-i18n="shop-h">Vous tenez une épicerie ou un taxiphone ?</h3>
-          <p data-i18n="shop-p">Vendez les recharges Allo Linke à vos clients qui paient en espèces.</p>
-          <ul>
-            <li data-i18n="shop-1">Recharge directe sur le numéro du client</li>
-            <li data-i18n="shop-2">Tickets avec code imprimés</li>
-            <li data-i18n="shop-3">Cartes de recharge Allo Linke</li>
-          </ul>
-        </div>
-        <div class="contact">
-          <h2 data-i18n="ct-h">Nous écrire</h2>
-          <p class="intro" style="margin-top:0" data-i18n="ct-p">Clients, commerçants et partenaires : une seule adresse.</p>
-          <div class="mailbox">
-            <span class="mono" id="mail">contact@allolinke.com</span>
-            <button class="copy" type="button" id="copy" data-i18n="copy">Copier</button>
-          </div>
-          <p class="intro" style="margin-top:0;font-size:15px" data-i18n="ct-loc">Allo Linke est basé en Italie.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© 2026 Allo Linke</span>
-    <span data-i18n="foot">Recharges mobiles vers l'Afrique de l'Ouest</span>
-  </footer>
-</div>
-
-<script>
-const COUNTRIES=[["Bénin","Benin","+229"],["Burkina Faso","Burkina Faso","+226"],["Cap-Vert","Cape Verde","+238"],["Côte d'Ivoire","Ivory Coast","+225"],["Gambie","Gambia","+220"],["Ghana","Ghana","+233"],["Guinée","Guinea","+224"],["Guinée-Bissau","Guinea-Bissau","+245"],["Liberia","Liberia","+231"],["Mali","Mali","+223"],["Mauritanie","Mauritania","+222"],["Niger","Niger","+227"],["Nigeria","Nigeria","+234"],["Sénégal","Senegal","+221"],["Sierra Leone","Sierra Leone","+232"],["Togo","Togo","+228"]];
-const EN={
-  status:"Launching soon",
-  h1:"Phone credit for family, <em>sent from Europe.</em>",
-  lede:"Allo Linke tops up phones in Mali, Senegal, Ivory Coast, Mauritania and across West Africa. Airtime and data bundles, paid in euros, with all fees included in the price.",
-  soon:"Coming soon on","r-title":"Top-up","r-example":"Example","r-to":"To","r-op":"Operator","r-paid":"Paid (fees included)",
-  "r-ok":"Credit received in Mali","r-note":"Indicative example. The exact price is shown in the app before you pay.",
-  "svc-h":"What you can send","at-launch":"At launch",later:"Coming later",
-  "s1-h":"Airtime","s1-p":"Top up Orange, Free, MTN, Moov and other operators.",
-  "s2-h":"Data bundles","s2-p":"The operators' real bundles, with data amount and validity shown.",
-  "s3-h":"International calls","s3-p":"Call family from the app, paid by the minute.",
-  "s4-h":"Electricity and bills","s4-p":"Pay prepaid electricity and some bills for your relatives.",
-  "how-h":"A top-up in three steps",
-  "st1-b":"Country and number","st1-s":"The operator is detected from the number.",
-  "st2-b":"Amount","st2-s":"The price shown already includes every fee.",
-  "st3-b":"Payment","st3-s":"By card in the app, or in cash at a partner shop.",
-  "cty-h":"All of West Africa","cty-p":"Countries planned for the first version. Available operators are listed in the app.",
-  "shop-h":"Do you run a grocery or a phone shop?","shop-p":"Sell Allo Linke top-ups to customers who pay in cash.",
-  "shop-1":"Direct top-up on the customer's number","shop-2":"Printed tickets with a code","shop-3":"Allo Linke top-up cards",
-  "ct-h":"Write to us","ct-p":"Customers, shops and partners: one address.",copy:"Copy","ct-loc":"Allo Linke is based in Italy.",
-  foot:"Mobile top-ups to West Africa"
-};
-const FR={};
-document.querySelectorAll("[data-i18n]").forEach(el=>FR[el.dataset.i18n]=el.textContent);
-document.querySelectorAll("[data-i18n-html]").forEach(el=>FR[el.dataset.i18nHtml]=el.innerHTML);
-let lang="fr";
-function renderCountries(){
-  const box=document.getElementById("countries");box.innerHTML="";
-  COUNTRIES.forEach(([fr,en,code])=>{const s=document.createElement("span");s.className="country";
-    s.innerHTML=`${lang==="en"?en:fr} <code>${code}</code>`;box.appendChild(s);});
-}
-function setLang(l){
-  lang=l;const d=l==="en"?EN:FR;document.documentElement.lang=l;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const v=d[el.dataset.i18n];if(v)el.textContent=v;});
-  document.querySelectorAll("[data-i18n-html]").forEach(el=>{const v=d[el.dataset.i18nHtml];if(v)el.innerHTML=v;});
-  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l));
-  renderCountries();
-  try{localStorage.setItem("al-lang",l)}catch(e){}
-}
-document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
-let start="fr";try{start=localStorage.getItem("al-lang")||(navigator.language||"fr").slice(0,2)}catch(e){}
-setLang(start==="en"?"en":"fr");
-document.getElementById("copy").addEventListener("click",async e=>{
-  const btn=e.currentTarget,txt=document.getElementById("mail").textContent;
-  try{await navigator.clipboard.writeText(txt);btn.textContent=lang==="en"?"Copied":"Copié";}
-  catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r);}
-  setTimeout(()=>{btn.textContent=lang==="en"?EN.copy:FR.copy},1800);
-});
-</script>
-
-</body>
+<body><div class="box"><svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#2E5C31"/><text x="256" y="318" text-anchor="middle" font-family="Bricolage Grotesque,DejaVu Sans,Arial,sans-serif" font-weight="800" font-size="200" fill="#fff" letter-spacing="-8">AL</text><path d="M150 360 Q256 410 362 360" fill="none" stroke="#C85A32" stroke-width="20" stroke-linecap="round"/></svg><h1>Allo Linke</h1><nav><a href="fr/" hreflang="fr" lang="fr">Français</a><a href="it/" hreflang="it" lang="it">Italiano</a><a href="en/" hreflang="en" lang="en">English</a><a href="es/" hreflang="es" lang="es">Español</a><a href="ar/" hreflang="ar" lang="ar">العربية</a></nav></div></body>
 </html>
