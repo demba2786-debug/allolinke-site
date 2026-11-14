@@ -44,7 +44,7 @@
   var btn = document.getElementById("go"), err = document.getElementById("err");
 
   // Only send the token back to the Allo Linke app (never to another site).
-  var ALLOWED = [/^frontend:\/\//, /^exps?:\/\//, /^https:\/\/(www\.)?allolinke\.com\//,
+  var ALLOWED = [/^frontend:\/\//, /^exps?:\/\//, /^https:\/\/(www\.|app\.)?allolinke\.com\//, /^https:\/\/allo-linke-app\.onrender\.com\//,
                  /^http:\/\/localhost(:\d+)?\//, /^http:\/\/127\.0\.0\.1(:\d+)?\//];
   var raw = new URLSearchParams(location.search).get("redirect") || "";
   var target = ALLOWED.some(function (r) { return r.test(raw); }) ? raw : "";
