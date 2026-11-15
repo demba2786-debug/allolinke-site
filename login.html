@@ -36,7 +36,9 @@
 <script>
   firebase.initializeApp({
     apiKey: "AIzaSyCuDNH-kEHU-hKJXXljaBYrk1A18hzXUUM",
-    authDomain: "allo-linke.firebaseapp.com",
+    // Our own domain: the sign-in helper files are hosted on www.allolinke.com/__/auth/,
+    // so phones (iPhone, Android) do not block the sign-in between two different addresses.
+    authDomain: "www.allolinke.com",
     projectId: "allo-linke",
     appId: "1:817467621720:web:fea032f07217056b0de52d"
   });
