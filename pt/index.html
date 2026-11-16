@@ -149,6 +149,7 @@ section.block{padding-block:64px;border-top:1px solid var(--line)}
 .mailbox .mono{font-size:17px;user-select:all;overflow-wrap:anywhere}
 .copy{margin-left:auto;font:600 14px/1 var(--f-body);border:0;background:var(--indigo);color:var(--bg);padding:11px 16px;border-radius:10px;cursor:pointer}
 
+footer .legal a{color:inherit;text-decoration:underline}
 footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 @media (max-width:880px){
@@ -241,7 +242,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);color:var(--mute
       </div>
     </section>
   </main>
-  <footer><span>© 2026 Allo Linke</span><span>Saldo, internet e chamadas para os seus</span></footer>
+  <footer><span>© 2026 Allo Linke</span><span>Saldo, internet e chamadas para os seus</span><span class="legal"><a href="/privacy.html">Privacidade</a> · <a href="/cgv.html">Condições (FR)</a></span></footer>
 </div>
 <script>
 document.querySelectorAll(".lang a").forEach(a=>a.addEventListener("click",()=>{try{localStorage.setItem("al-lang",a.dataset.lang)}catch(e){}}));
